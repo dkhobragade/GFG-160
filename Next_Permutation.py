@@ -3,7 +3,6 @@ arr = [2, 4, 1, 7, 5, 0]
 pivot = -1
 
 for i in range(len(arr) - 1, -1, -1):
-    print
     if arr[i - 1] < arr[i]:
         pivot = i - 1
         break
