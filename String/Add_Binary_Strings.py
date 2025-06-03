@@ -36,4 +36,4 @@ def removeLeadingZero(s):
     return s[first:] if first != -1 else "0"
 
 
-print(removeLeadingZero(result))
+print(removeLeadingZero(result[::-1]))
