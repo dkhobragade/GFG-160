@@ -52,33 +52,55 @@ mat = [[0, 1, 2, 0], [3, 4, 5, 2], [1, 3, 1, 5]]
 
 # print(mat)
 
+# n = len(mat)
+# m = len(mat[0])
+
+# print(n, m)
+
+
+# def row(i):
+#     for j in range(m):
+#         if mat[i][j] != 0:
+#             mat[i][j] = -1
+
+
+# def col(i):
+#     for i in range(n):
+#         if mat[i][j] != 0:
+#             mat[i][j] = -1
+
+
+# for i in range(n):
+#     for j in range(m):
+#         if mat[i][j] == 0:
+#             row(i)
+#             col(i)
+
+
+# for i in range(n):
+#     for j in range(m):
+#         if mat[i][j] == -1:
+#             mat[i][j] = 0
+# print(mat)
+
+
 n = len(mat)
 m = len(mat[0])
 
-print(n, m)
-
-
-def row(i):
-    for j in range(m):
-        if mat[i][j] != 0:
-            mat[i][j] = -1
-
-
-def col(i):
-    for i in range(n):
-        if mat[i][j] != 0:
-            mat[i][j] = -1
-
+row = [False] * n
+col = [False] * m
 
 for i in range(n):
     for j in range(m):
         if mat[i][j] == 0:
-            row(i)
-            col(i)
+            row[i] = True
+            col[j] = True
 
+print(row)
+print(col)
 
 for i in range(n):
     for j in range(m):
-        if mat[i][j] == -1:
+        if row[i] or col[j]:
             mat[i][j] = 0
 print(mat)
