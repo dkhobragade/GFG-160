@@ -40,19 +40,34 @@ target = 16
 # print(SumPair(arr))
 
 
-def TwoPointer(arr):
-    arr.sort()
-    left = 0
-    right = len(arr) - 1
+# def TwoPointer(arr):
+#     arr.sort()
+#     left = 0
+#     right = len(arr) - 1
 
-    while left < right:
-        if arr[left] + arr[right] == target:
+#     while left < right:
+#         if arr[left] + arr[right] == target:
+#             return True
+#         elif arr[left] + arr[right] > target:
+#             right -= 1
+#         else:
+#             left += 1
+#     return False
+
+
+# print(TwoPointer(arr))
+
+
+def Hashing(arr):
+    s = set()
+
+    for i in arr:
+        comp = target - i
+
+        if comp in s:
             return True
-        elif arr[left] + arr[right] > target:
-            right -= 1
-        else:
-            left += 1
+        s.add(i)
     return False
 
 
-print(TwoPointer(arr))
+print(Hashing(arr))
