@@ -1,19 +1,29 @@
+from collections import defaultdict
+
 arr = ["act", "god", "cat", "dog", "tac"]
 
-mp = {}
-res = []
+# mp = {}
+# res = []
 
-mp["dik"] = len(res)
-print(res)
+# for i in range(len(arr)):
+#     s = arr[i]
+#     s = "".join(sorted(s))
 
-for i in range(len(arr)):
-    s = arr[i]
-    s = "".join(sorted(s))
+#     if s not in mp:
+#         mp[s] = len(res)
+#         res.append([])
 
-    if s not in mp:
-        mp[s] = len(res)
-        res.append([])
+#     res[mp[s]].append(arr[i])
 
-    res[mp[s]].append(arr[i])
+# print(res)
 
-print(res)
+
+ans = defaultdict(list)
+
+for s in arr:
+    count = [0] * 26
+    for c in s:
+        count[ord(c) - ord("a")] += 1
+    ans[tuple(count)].append(s)
+
+print(list(ans.values()))
