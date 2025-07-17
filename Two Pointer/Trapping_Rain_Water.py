@@ -20,25 +20,46 @@ arr = [3, 0, 1, 0, 4, 0, 2]
 
 # print(res)
 
-res = 0
+# res = 0
+
+# n = len(arr)
+
+
+# prefix = [0] * n
+# prefix[0] = arr[0]
+# for i in range(1, n):
+#     prefix[i] = max(prefix[i - 1], arr[i])
+
+# sufix = [0] * n
+# sufix[-1] = arr[-1]
+# for i in range(n - 2, -1, -1):
+#     sufix[i] = max(sufix[i + 1], arr[i])
+
+
+# for i in range(n):
+#     trapped = min(prefix[i], sufix[i]) - arr[i]
+#     if trapped > 0:
+#         res += trapped
+
+# print(res)
+
 
 n = len(arr)
+left = 0
+right = n - 1
 
+leftMax = 0
+rightMax = 0
+ans = 0
+while left < right:
+    leftMax = max(leftMax, arr[left])
+    rightMax = max(rightMax, arr[right])
 
-prefix = [0] * n
-prefix[0] = arr[0]
-for i in range(1, n):
-    prefix[i] = max(prefix[i - 1], arr[i])
+    if leftMax < rightMax:
+        ans += leftMax - arr[left]
+        left += 1
+    else:
+        ans += rightMax - arr[right]
+        right -= 1
 
-sufix = [0] * n
-sufix[-1] = arr[-1]
-for i in range(n - 2, -1, -1):
-    sufix[i] = max(sufix[i + 1], arr[i])
-
-
-for i in range(n):
-    trapped = min(prefix[i], sufix[i]) - arr[i]
-    if trapped > 0:
-        res += trapped
-
-print(res)
+print(ans)
