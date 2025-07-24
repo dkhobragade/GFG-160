@@ -1,56 +1,40 @@
 class Node:
-    def __init__(self, data):
+    def __init__(self, data, next):
         self.data = data
-        self.next = None  # Pointer to the next node
+        self.next = next
 
 
-class LinkedList:
-    def __init__(self):
-        self.head = None  # First node of the list
-
-    def append(self, data):
-        new_node = Node(data)
-        if not self.head:
-            self.head = new_node  # If list is empty, make new node the head
-            return
-        current = self.head
-        while current.next:
-            current = current.next
-        current.next = new_node
-
-    def print_list(self):
-        current = self.head
-        while current:
-            print(current.data, end=" -> ")
-            current = current.next
-        print("None")
+def insert_at_beginning(data, next):
+    return Node(data, next)
 
 
-# Create the linked list
-ll = LinkedList()
-ll.append(1)
-ll.append(2)
-ll.append(3)
-ll.append(4)
-
-# Print the list
-ll.print_list()
+node5 = insert_at_beginning(50, None)
+node4 = insert_at_beginning(40, node5)
+node3 = insert_at_beginning(30, node4)
+node2 = insert_at_beginning(20, node3)
+node1 = insert_at_beginning(10, node2)
 
 
-def reverseList(self, head):
-    # Code here
-    curr = head
+def printLinkedList(head):
+
+    cur = head
+    while cur:
+        print(cur.data, "-->", end=" ")
+        cur = cur.next
+
+
+def reverseLinkedList(head):
     prev = None
+    cur = head
 
-    while curr:
-        next = curr.next
-        curr.next = prev
+    while cur:
+        next = cur.next
+        cur.next = prev
 
-        prev = curr
-        curr = next
-    head = prev
+        prev = cur
+        cur = next
 
-    return head
+    return prev
 
 
-print(reverseList())
+print(printLinkedList(reverseLinkedList(node1)))
